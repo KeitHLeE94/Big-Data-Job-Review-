@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <form method="post" action="/form">
+        {{ form2.csrf_token }}
+        {{ form2.text.label }} {{ form2.text(size=20) }}
+{#        {{ form2.password.label }} {{ form2.password(size=30) }}#}
+        <input type="submit" value="시작">
+     </form>
+
+    <h1>{{ name }}을(를) 입력하셨습니다.</h1>
+
+    <form action="/form" method="post" name="lee">
+    <!-- form에 이름쓰는 이유: 구별하기 위해서. -->
+    <!-- method-get방식: 입력 후 제출버튼 눌렀을때 주소에 ? 붙는다. -->
+    <!-- action: form 입력 후 이를 처리할 로직이 존재하는 주소값.(이동안하고 그 주소 그대로 해도됨: 이 경우 get방식 사용 불가능.) -->
+        <input type="text" name="text">
+        <!-- name 지정해두면 주소에 a=입력한 값으로 ?뒤에 붙는다. -->
+        <input type="password" name="password">
+        <input type="submit" value="시작">
+    </form>
+{% endblock content %}

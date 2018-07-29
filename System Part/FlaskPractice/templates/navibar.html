@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">이재현</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{{ url_for('index') }}">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('graph') }}">그래프</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Exercises
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="{{ url_for('homeworks', name=2) }}"><i class="fas fa-book-open"></i>EX#2</a>
+            <a class="dropdown-item" href="{{ url_for('homeworks', name=3) }}"><i class="fas fa-book-open"></i>EX#3</a>
+            <a class="dropdown-item" href="{{ url_for('homeworks', name=4) }}"><i class="fas fa-book-open"></i>EX#4</a>
+            <a class="dropdown-item" href="{{ url_for('homeworks', name=5) }}"><i class="fas fa-book-open"></i>EX#5</a>
+            <a class="dropdown-item" href="{{ url_for('homeworks', name=6) }}"><i class="fas fa-book-open"></i>EX#6</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('p_index') }}">Data-Netflix</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('form') }}">Form 입력</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" href="http://127.0.0.1:5000/admin">Admin</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0", method="post", action="{{ url_for('search') }}">
+      <input class="form-control mr-sm-2" type="search" placeholder="검색어 입력..." aria-label="Search", name="search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">검색</button>
+    </form>
+  </div>
+</nav>

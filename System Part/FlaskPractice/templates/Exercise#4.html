@@ -1,0 +1,404 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Exercise 129: Two Dice Simulation</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In this exercise you will simulate 1,000 rolls of two dice. Begin by writing a func- tion that simulates rolling a pair of six-sided dice. Your function will not take any
+parameters. It will return the total that was rolled on two dice as its only result. Write a main program that uses your function to simulate rolling two six-sided dice 1,000 times. As your program runs, it should count the number of times that each total occurs. Then it should display a table that summarizes this data. Express the frequency for each total as a percentage of the total number of rolls. Your program should also display the percentage expected by probability theory for each total.
+Sample output is shown below.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[96]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">count2</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">count3</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">count4</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">count5</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">count6</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">count7</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">count8</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">count9</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">count10</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">count11</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">count12</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">roll</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
+        <span class="n">d1</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+        <span class="n">d2</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">d1</span> <span class="o">+</span> <span class="n">d2</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">result</span><span class="o">.</span><span class="fm">__setitem__</span><span class="p">(</span><span class="s1">&#39;count2&#39;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;count2&#39;</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">d1</span> <span class="o">+</span> <span class="n">d2</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="n">result</span><span class="o">.</span><span class="fm">__setitem__</span><span class="p">(</span><span class="s1">&#39;count3&#39;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;count3&#39;</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">d1</span> <span class="o">+</span> <span class="n">d2</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+            <span class="n">result</span><span class="o">.</span><span class="fm">__setitem__</span><span class="p">(</span><span class="s1">&#39;count4&#39;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;count4&#39;</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">d1</span> <span class="o">+</span> <span class="n">d2</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+            <span class="n">result</span><span class="o">.</span><span class="fm">__setitem__</span><span class="p">(</span><span class="s1">&#39;count5&#39;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;count5&#39;</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">d1</span> <span class="o">+</span> <span class="n">d2</span> <span class="o">==</span> <span class="mi">6</span><span class="p">:</span>
+            <span class="n">result</span><span class="o">.</span><span class="fm">__setitem__</span><span class="p">(</span><span class="s1">&#39;count6&#39;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;count6&#39;</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">d1</span> <span class="o">+</span> <span class="n">d2</span> <span class="o">==</span> <span class="mi">7</span><span class="p">:</span>
+            <span class="n">result</span><span class="o">.</span><span class="fm">__setitem__</span><span class="p">(</span><span class="s1">&#39;count7&#39;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;count7&#39;</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">d1</span> <span class="o">+</span> <span class="n">d2</span> <span class="o">==</span> <span class="mi">8</span><span class="p">:</span>
+            <span class="n">result</span><span class="o">.</span><span class="fm">__setitem__</span><span class="p">(</span><span class="s1">&#39;count8&#39;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;count8&#39;</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">d1</span> <span class="o">+</span> <span class="n">d2</span> <span class="o">==</span> <span class="mi">9</span><span class="p">:</span>
+            <span class="n">result</span><span class="o">.</span><span class="fm">__setitem__</span><span class="p">(</span><span class="s1">&#39;count9&#39;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;count9&#39;</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">d1</span> <span class="o">+</span> <span class="n">d2</span> <span class="o">==</span> <span class="mi">10</span><span class="p">:</span>
+            <span class="n">result</span><span class="o">.</span><span class="fm">__setitem__</span><span class="p">(</span><span class="s1">&#39;count10&#39;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;count10&#39;</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">d1</span> <span class="o">+</span> <span class="n">d2</span> <span class="o">==</span> <span class="mi">11</span><span class="p">:</span>
+            <span class="n">result</span><span class="o">.</span><span class="fm">__setitem__</span><span class="p">(</span><span class="s1">&#39;count11&#39;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;count11&#39;</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">d1</span> <span class="o">+</span> <span class="n">d2</span> <span class="o">==</span> <span class="mi">12</span><span class="p">:</span>
+            <span class="n">result</span><span class="o">.</span><span class="fm">__setitem__</span><span class="p">(</span><span class="s1">&#39;count12&#39;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;count12&#39;</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">roll</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Total&#39;</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="s1">&#39;Simulated&#39;</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="s1">&#39;Expected&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;     &#39;</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="s1">&#39;Percent&#39;</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="s1">&#39;        Percent&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;2       &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(((</span><span class="n">result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;count2&#39;</span><span class="p">)</span><span class="o">/</span><span class="mi">1000</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="fm">__round__</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\t\t</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="s1">&#39;2.78&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;3       &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(((</span><span class="n">result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;count3&#39;</span><span class="p">)</span><span class="o">/</span><span class="mi">1000</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="fm">__round__</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\t\t</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="s1">&#39;5.56&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;4       &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(((</span><span class="n">result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;count4&#39;</span><span class="p">)</span><span class="o">/</span><span class="mi">1000</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="fm">__round__</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\t\t</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="s1">&#39;8.33&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;5       &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(((</span><span class="n">result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;count5&#39;</span><span class="p">)</span><span class="o">/</span><span class="mi">1000</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="fm">__round__</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\t\t</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="s1">&#39;11.11&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;6       &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(((</span><span class="n">result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;count6&#39;</span><span class="p">)</span><span class="o">/</span><span class="mi">1000</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="fm">__round__</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\t\t</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="s1">&#39;13.89&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;7       &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(((</span><span class="n">result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;count7&#39;</span><span class="p">)</span><span class="o">/</span><span class="mi">1000</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="fm">__round__</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\t\t</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="s1">&#39;16.67&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;8       &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(((</span><span class="n">result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;count8&#39;</span><span class="p">)</span><span class="o">/</span><span class="mi">1000</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="fm">__round__</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\t\t</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="s1">&#39;13.89&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;9       &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(((</span><span class="n">result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;count9&#39;</span><span class="p">)</span><span class="o">/</span><span class="mi">1000</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="fm">__round__</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\t\t</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="s1">&#39;11.11&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;10       &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(((</span><span class="n">result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;count10&#39;</span><span class="p">)</span><span class="o">/</span><span class="mi">1000</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="fm">__round__</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\t\t</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="s1">&#39;8.33&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;11       &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(((</span><span class="n">result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;count11&#39;</span><span class="p">)</span><span class="o">/</span><span class="mi">1000</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="fm">__round__</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\t\t</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="s1">&#39;5.56&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;12       &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(((</span><span class="n">result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;count12&#39;</span><span class="p">)</span><span class="o">/</span><span class="mi">1000</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="fm">__round__</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\t\t</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="s1">&#39;2.78&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Total	Simulated	Expected
+     	Percent	        Percent
+2       4.6		2.78
+3       5.5		5.56
+4       8.6		8.33
+5       12.0		11.11
+6       11.4		13.89
+7       17.0		16.67
+8       13.1		13.89
+9       12.6		11.11
+10       7.4		8.33
+11       4.9		5.56
+12       2.9		2.78</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Exercise 130: Text Messaging</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>On some basic cell phones, text messages can be sent using the numeric keypad. Because each key has multiple letters associated with it, multiple key presses are needed for most letters. Pressing the number once generates the first letter on the key. Pressing the number 2, 3, 4 or 5 times generates the second, third, fourth or fifth
+character listed for that key.</p>
+<p>Write a program that displays the key presses that must be made to enter a text message read from the user. Construct a dictionary that maps from each letter or symbol to the key presses. Then use the dictionary to generate and display the presses for the user’s message. For example, if the user enters Hello, World! then your program should output 4433555555666110966677755531111. Ensure that your program handles both uppercase and lowercase letters. Ignore any characters that aren’t listed in the table above such as semicolons and brackets.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[119]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">keydict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">A</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">B</span><span class="o">=</span><span class="mi">22</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mi">222</span><span class="p">,</span> <span class="n">D</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">E</span><span class="o">=</span><span class="mi">33</span><span class="p">,</span> <span class="n">F</span><span class="o">=</span><span class="mi">333</span><span class="p">,</span> <span class="n">G</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">H</span><span class="o">=</span><span class="mi">44</span><span class="p">,</span> <span class="n">I</span><span class="o">=</span><span class="mi">444</span><span class="p">,</span> <span class="n">J</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">K</span><span class="o">=</span><span class="mi">55</span><span class="p">,</span> <span class="n">L</span><span class="o">=</span><span class="mi">555</span><span class="p">,</span> <span class="n">M</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="mi">66</span><span class="p">,</span> <span class="n">O</span><span class="o">=</span><span class="mi">666</span><span class="p">,</span> <span class="n">P</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="mi">77</span><span class="p">,</span> <span class="n">R</span><span class="o">=</span><span class="mi">777</span><span class="p">,</span> <span class="n">S</span><span class="o">=</span><span class="mi">7777</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">U</span><span class="o">=</span><span class="mi">88</span><span class="p">,</span> <span class="n">V</span><span class="o">=</span><span class="mi">888</span><span class="p">,</span> <span class="n">W</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">X</span><span class="o">=</span><span class="mi">99</span><span class="p">,</span> <span class="n">Y</span><span class="o">=</span><span class="mi">999</span><span class="p">,</span> <span class="n">Z</span><span class="o">=</span><span class="mi">9999</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">22</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">222</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">e</span><span class="o">=</span><span class="mi">33</span><span class="p">,</span> <span class="n">f</span><span class="o">=</span><span class="mi">333</span><span class="p">,</span> <span class="n">g</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mi">44</span><span class="p">,</span> <span class="n">i</span><span class="o">=</span><span class="mi">444</span><span class="p">,</span> <span class="n">j</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">55</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">555</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">66</span><span class="p">,</span> <span class="n">o</span><span class="o">=</span><span class="mi">666</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">77</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="mi">777</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">7777</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">u</span><span class="o">=</span><span class="mi">88</span><span class="p">,</span> <span class="n">v</span><span class="o">=</span><span class="mi">888</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">99</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">999</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">9999</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">mapping</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="nb">str</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">string</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="s1">&#39;.&#39;</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">+=</span> <span class="s1">&#39;1&#39;</span>
+        <span class="k">elif</span> <span class="n">i</span> <span class="o">==</span> <span class="s1">&#39;,&#39;</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">+=</span> <span class="s1">&#39;11&#39;</span>
+        <span class="k">elif</span> <span class="n">i</span> <span class="o">==</span> <span class="s1">&#39;?&#39;</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">+=</span> <span class="s1">&#39;111&#39;</span>
+        <span class="k">elif</span> <span class="n">i</span> <span class="o">==</span> <span class="s1">&#39;!&#39;</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">+=</span> <span class="s1">&#39;1111&#39;</span>
+        <span class="k">elif</span> <span class="n">i</span> <span class="o">==</span> <span class="s1">&#39;:&#39;</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">+=</span> <span class="s1">&#39;11111&#39;</span>
+        <span class="k">elif</span> <span class="n">i</span> <span class="o">==</span> <span class="s1">&#39; &#39;</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">+=</span> <span class="s1">&#39;0&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">+=</span> <span class="nb">str</span><span class="p">(</span><span class="n">keydict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">result</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">mapping</span><span class="p">(</span><span class="nb">input</span><span class="p">()))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Hello, World!
+4433555555666110966677755531111
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Exercise 131: Morse Code</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Morse code is an encoding scheme that uses dashes and dots to represent numbers and letters. In this exercise, you will write a program that uses a dictionary to store the mapping from letters and numbers to Morse code. Use a period to represent a dot, and a hyphen to represent a dash. The mapping from letters and numbers to dashes
+and dots is shown in Table 6.1.</p>
+<p>Your program should read a message from the user. Then it should translate each
+letter and number in the message to Morse code, leaving a space between each sequence of dashes and dots. Your program should ignore any characters that are not letters or numbers. The Morse code for Hello, World! is shown below:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[137]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">morsemap</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="n">morsemap</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;.-&#39;</span><span class="p">)</span><span class="c1">#A</span>
+<span class="n">morsemap</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;-...&#39;</span><span class="p">)</span><span class="c1">#B</span>
+<span class="n">morsemap</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;-.-.&#39;</span><span class="p">)</span><span class="c1">#C</span>
+<span class="n">morsemap</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;-..&#39;</span><span class="p">)</span><span class="c1">#D</span>
+<span class="n">morsemap</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span><span class="c1">#E</span>
+<span class="n">morsemap</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;..-.&#39;</span><span class="p">)</span><span class="c1">#F</span>
+<span class="n">morsemap</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;--.&#39;</span><span class="p">)</span><span class="c1">#G</span>
+<span class="n">morsemap</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;....&#39;</span><span class="p">)</span><span class="c1">#H</span>
+<span class="n">morsemap</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">)</span><span class="c1">#I</span>
+<span class="n">morsemap</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;.---&#39;</span><span class="p">)</span><span class="c1">#J</span>
+<span class="n">morsemap</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;-.-&#39;</span><span class="p">)</span><span class="c1">#K</span>
+<span class="n">morsemap</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;.-..&#39;</span><span class="p">)</span><span class="c1">#L</span>
+<span class="n">morsemap</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;--&#39;</span><span class="p">)</span><span class="c1">#M</span>
+<span class="n">morsemap</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;-.&#39;</span><span class="p">)</span><span class="c1">#N</span>
+<span class="n">morsemap</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;---&#39;</span><span class="p">)</span><span class="c1">#O</span>
+<span class="n">morsemap</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;.--.&#39;</span><span class="p">)</span><span class="c1">#P</span>
+<span class="n">morsemap</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;--.-&#39;</span><span class="p">)</span><span class="c1">#Q</span>
+<span class="n">morsemap</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;.-.&#39;</span><span class="p">)</span><span class="c1">#R</span>
+<span class="n">morsemap</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;...&#39;</span><span class="p">)</span><span class="c1">#S</span>
+<span class="n">morsemap</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)</span><span class="c1">#T</span>
+<span class="n">morsemap</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;..-&#39;</span><span class="p">)</span><span class="c1">#U</span>
+<span class="n">morsemap</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;...-&#39;</span><span class="p">)</span><span class="c1">#V</span>
+<span class="n">morsemap</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;.--&#39;</span><span class="p">)</span><span class="c1">#W</span>
+<span class="n">morsemap</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;-..-&#39;</span><span class="p">)</span><span class="c1">#X</span>
+<span class="n">morsemap</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;-.--&#39;</span><span class="p">)</span><span class="c1">#Y</span>
+<span class="n">morsemap</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;--..&#39;</span><span class="p">)</span><span class="c1">#Z 25</span>
+<span class="n">morsemap</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;-----&#39;</span><span class="p">)</span><span class="c1">#0 26</span>
+<span class="n">morsemap</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;.----&#39;</span><span class="p">)</span><span class="c1">#1 27</span>
+<span class="n">morsemap</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;..---&#39;</span><span class="p">)</span><span class="c1">#2 28</span>
+<span class="n">morsemap</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;...--&#39;</span><span class="p">)</span><span class="c1">#3 29</span>
+<span class="n">morsemap</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;....-&#39;</span><span class="p">)</span><span class="c1">#4 30</span>
+<span class="n">morsemap</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;.....&#39;</span><span class="p">)</span><span class="c1">#5 31</span>
+<span class="n">morsemap</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;-....&#39;</span><span class="p">)</span><span class="c1">#6 32</span>
+<span class="n">morsemap</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;--...&#39;</span><span class="p">)</span><span class="c1">#7 33</span>
+<span class="n">morsemap</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;---..&#39;</span><span class="p">)</span><span class="c1">#8 34</span>
+<span class="n">morsemap</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;----.&#39;</span><span class="p">)</span><span class="c1">#9 35</span>
+
+<span class="n">morsedict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">A</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">B</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">D</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">E</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">F</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">G</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">H</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">I</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">J</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">K</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">L</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">M</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span> <span class="n">O</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">P</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">R</span><span class="o">=</span><span class="mi">17</span><span class="p">,</span> <span class="n">S</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="mi">19</span><span class="p">,</span> <span class="n">U</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">V</span><span class="o">=</span><span class="mi">21</span><span class="p">,</span> <span class="n">W</span><span class="o">=</span><span class="mi">22</span><span class="p">,</span> <span class="n">X</span><span class="o">=</span><span class="mi">23</span><span class="p">,</span> <span class="n">Y</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">Z</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">morse_mapping</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="nb">str</span><span class="p">()</span>
+    <span class="n">temp</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">temp</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">i</span><span class="o">.</span><span class="n">isalpha</span><span class="p">()</span> <span class="o">==</span> <span class="kc">False</span> <span class="ow">and</span> <span class="n">i</span><span class="o">.</span><span class="n">isdigit</span><span class="p">()</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="s1">&#39;0&#39;</span><span class="p">:</span>
+                <span class="n">result</span> <span class="o">+=</span> <span class="n">morsemap</span><span class="p">[</span><span class="mi">26</span><span class="p">]</span>
+                <span class="n">result</span> <span class="o">+=</span> <span class="s1">&#39; &#39;</span>
+            <span class="k">elif</span> <span class="n">i</span> <span class="o">==</span> <span class="s1">&#39;1&#39;</span><span class="p">:</span>
+                <span class="n">result</span> <span class="o">+=</span> <span class="n">morsemap</span><span class="p">[</span><span class="mi">27</span><span class="p">]</span>
+                <span class="n">result</span> <span class="o">+=</span> <span class="s1">&#39; &#39;</span>
+            <span class="k">elif</span> <span class="n">i</span> <span class="o">==</span> <span class="s1">&#39;2&#39;</span><span class="p">:</span>
+                <span class="n">result</span> <span class="o">+=</span> <span class="n">morsemap</span><span class="p">[</span><span class="mi">28</span><span class="p">]</span>
+                <span class="n">result</span> <span class="o">+=</span> <span class="s1">&#39; &#39;</span>
+            <span class="k">elif</span> <span class="n">i</span> <span class="o">==</span> <span class="s1">&#39;3&#39;</span><span class="p">:</span>
+                <span class="n">result</span> <span class="o">+=</span> <span class="n">morsemap</span><span class="p">[</span><span class="mi">29</span><span class="p">]</span>
+                <span class="n">result</span> <span class="o">+=</span> <span class="s1">&#39; &#39;</span>
+            <span class="k">elif</span> <span class="n">i</span> <span class="o">==</span> <span class="s1">&#39;4&#39;</span><span class="p">:</span>
+                <span class="n">result</span> <span class="o">+=</span> <span class="n">morsemap</span><span class="p">[</span><span class="mi">30</span><span class="p">]</span>
+                <span class="n">result</span> <span class="o">+=</span> <span class="s1">&#39; &#39;</span>
+            <span class="k">elif</span> <span class="n">i</span> <span class="o">==</span> <span class="s1">&#39;5&#39;</span><span class="p">:</span>
+                <span class="n">result</span> <span class="o">+=</span> <span class="n">morsemap</span><span class="p">[</span><span class="mi">31</span><span class="p">]</span>
+                <span class="n">result</span> <span class="o">+=</span> <span class="s1">&#39; &#39;</span>
+            <span class="k">elif</span> <span class="n">i</span> <span class="o">==</span> <span class="s1">&#39;6&#39;</span><span class="p">:</span>
+                <span class="n">result</span> <span class="o">+=</span> <span class="n">morsemap</span><span class="p">[</span><span class="mi">32</span><span class="p">]</span>
+                <span class="n">result</span> <span class="o">+=</span> <span class="s1">&#39; &#39;</span>
+            <span class="k">elif</span> <span class="n">i</span> <span class="o">==</span> <span class="s1">&#39;7&#39;</span><span class="p">:</span>
+                <span class="n">result</span> <span class="o">+=</span> <span class="n">morsemap</span><span class="p">[</span><span class="mi">33</span><span class="p">]</span>
+                <span class="n">result</span> <span class="o">+=</span> <span class="s1">&#39; &#39;</span>
+            <span class="k">elif</span> <span class="n">i</span> <span class="o">==</span> <span class="s1">&#39;8&#39;</span><span class="p">:</span>
+                <span class="n">result</span> <span class="o">+=</span> <span class="n">morsemap</span><span class="p">[</span><span class="mi">34</span><span class="p">]</span>
+                <span class="n">result</span> <span class="o">+=</span> <span class="s1">&#39; &#39;</span>
+            <span class="k">elif</span> <span class="n">i</span> <span class="o">==</span> <span class="s1">&#39;9&#39;</span><span class="p">:</span>
+                <span class="n">result</span> <span class="o">+=</span> <span class="n">morsemap</span><span class="p">[</span><span class="mi">35</span><span class="p">]</span>
+                <span class="n">result</span> <span class="o">+=</span> <span class="s1">&#39; &#39;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">result</span> <span class="o">+=</span> <span class="n">morsemap</span><span class="p">[</span><span class="n">morsedict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span>
+                <span class="n">result</span> <span class="o">+=</span> <span class="s1">&#39; &#39;</span>
+
+    <span class="k">return</span> <span class="n">result</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">morse_mapping</span><span class="p">(</span><span class="nb">input</span><span class="p">()))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Hello, World!
+.... . .-.. .-.. --- .-- --- .-. .-.. -..
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Exercise 132: Postal Codes</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In a Canadian postal code, the first, third and fifth characters are letters while the second, fourth and sixth characters are numbers. The province can be determined from the first character of a postal code, as shown in the following table. No valid
+postal codes currently begin with D, F, I, O, Q, U, W, or Z.</p>
+<p>The second character in a postal code identifies whether the address is rural or urban. If that character is a 0 then the address is rural. Otherwise it is urban.
+Create a program that reads a postal code from the user and displays the province associated with it, along with whether the address is urban or rural. For example, if the user enters T2N 1N4 then your program should indicate that the postal code is for an urban address in Alberta. If the user enters X0A 1B2 then your program should indicate that the postal code is for a rural address in Nunavut or Northwest Territories. Use a dictionary to map from the first character of the postal code to the province name. Display a meaningful error message if the postal code begins with an invalid character.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[151]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">provincemap</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">A</span><span class="o">=</span><span class="s1">&#39;Newfoundland&#39;</span><span class="p">,</span> <span class="n">B</span><span class="o">=</span><span class="s1">&#39;Nova Scotia&#39;</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="s1">&#39;Prince Edward Island&#39;</span><span class="p">,</span> <span class="n">E</span><span class="o">=</span><span class="s1">&#39;New Brunswick&#39;</span><span class="p">,</span> <span class="n">F</span><span class="o">=</span><span class="s1">&#39;Quebec&#39;</span><span class="p">,</span> <span class="n">G</span><span class="o">=</span><span class="s1">&#39;Quebec&#39;</span><span class="p">,</span> <span class="n">H</span><span class="o">=</span><span class="s1">&#39;Quebec&#39;</span><span class="p">,</span> <span class="n">J</span><span class="o">=</span><span class="s1">&#39;Quebec&#39;</span><span class="p">,</span> <span class="n">K</span><span class="o">=</span><span class="s1">&#39;Ontario&#39;</span><span class="p">,</span> <span class="n">L</span><span class="o">=</span><span class="s1">&#39;Ontario&#39;</span><span class="p">,</span> <span class="n">M</span><span class="o">=</span><span class="s1">&#39;Ontario&#39;</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="s1">&#39;Ontario&#39;</span><span class="p">,</span> <span class="n">P</span><span class="o">=</span><span class="s1">&#39;Ontario&#39;</span><span class="p">,</span> <span class="n">R</span><span class="o">=</span><span class="s1">&#39;Manitoba&#39;</span><span class="p">,</span> <span class="n">S</span><span class="o">=</span><span class="s1">&#39;Saskatchewan&#39;</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="s1">&#39;Alberta&#39;</span><span class="p">,</span> <span class="n">V</span><span class="o">=</span><span class="s1">&#39;British Columbia&#39;</span><span class="p">,</span> <span class="n">X</span><span class="o">=</span><span class="s1">&#39;Northwest Territories&#39;</span><span class="p">,</span> <span class="n">Y</span><span class="o">=</span><span class="s1">&#39;Yukon&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">post_map</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="nb">str</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">string</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;0&#39;</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">+=</span> <span class="s1">&#39;Rural address in &#39;</span>
+    <span class="k">elif</span> <span class="n">string</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="s1">&#39;0&#39;</span> <span class="ow">and</span> <span class="n">string</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">isdigit</span><span class="p">()</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">+=</span> <span class="s1">&#39;Urban address in &#39;</span>
+
+    <span class="k">if</span> <span class="n">string</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;X&#39;</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">+=</span> <span class="s1">&#39;Nunavut or &#39;</span>
+        <span class="n">result</span> <span class="o">+=</span> <span class="n">provincemap</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">string</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">elif</span> <span class="n">string</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">isalpha</span><span class="p">()</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">+=</span> <span class="n">provincemap</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">string</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">post_map</span><span class="p">(</span><span class="nb">input</span><span class="p">()))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>X0A 1B2
+Rural address in Nunavut or Northwest Territories
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    </div>
+  </div>
+{% endblock content %}

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="content">
+        <table class="table table-dark table-bordered table-hover">
+        <thead>
+            <th>이름</th>
+            <th>메일</th>
+        </thead>
+        <tbody>
+            {% for i in lee %}
+            <tr>
+                <td>{{ i.username }}</td>
+                <td>{{ i.email }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        </table>
+
+        <h1>Hi</h1>
+        <img src="{{ url_for('static', filename='image/564x483--c0eb5cfb-f3b2-48a9-a5a9-14bad4a723a5.jpg') }}">
+        <i class="fab fa-apple"></i>
+        <i class="fas fa-baseball-ball"></i>
+    </div>
+{% endblock content %}
