@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{#{% block styles %}#}
+{#<style>#}
+{#    sndmap {#}
+{#        width: 100%;#}
+{#        height: 100%;#}
+{#        top: 64px;#}
+{#        left: 0;#}
+{#        position: absolute;#}
+{#        z-index: 200;#}
+{#    }#}
+{#</style>#}
+{#{% endblock styles %}#}
+
+{% block scripts %}
+{#    {{"decoupled-map"|googlemap_js(37.4419, -122.1419, markers=[(37.4419, -122.1419)])}}#}
+{#    {{mymap.js}}#}
+    {{sndmap.js}}
+{% endblock scripts %}
+
+{% block content %}
+    <div class="content">
+{#        {{mymap.html}}#}
+        {{sndmap.html}}
+    </div>
+{% endblock content %}
