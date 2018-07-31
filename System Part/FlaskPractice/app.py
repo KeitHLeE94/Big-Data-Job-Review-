@@ -10,6 +10,7 @@ from flask_moment import Moment
 from datetime import datetime
 from flask_security import Security, SQLAlchemyUserDatastore, UserMixin, RoleMixin, login_required
 from flask_googlemaps import GoogleMaps, Map
+from crimedata import centre, marker
 
 
 app = Flask(__name__)
@@ -173,9 +174,19 @@ def form2():
 def googlemap():
     mymap = Map(
         identifier="view-side",
-        lat=37.4419,
-        lng=-122.1419,
-        markers=[(37.4419, -122.1419)]
+        lat=centre.GEO_LAT,
+        lng=centre.GEO_LON,
+        markers=marker,
+        zoom=13,
+        style=(
+            "height:100%;"
+            "width:100%;"
+            "top:64;"
+            "left:0;"
+            "position:absolute;"
+            "z-index:200;"
+        ),
+        language='ko',
     )
     sndmap = Map(
         identifier="sndmap",
@@ -214,7 +225,7 @@ def googlemap():
     )
     sndmap.add_circle(37.5132612, 127.10013359999994, 1000)
     sndmap.add_polygon
-    return render_template('map.html', sndmap=sndmap)
+    return render_template('map.html', mymap=mymap)
 
 
 if __name__ == '__main__':
